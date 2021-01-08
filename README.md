@@ -18,12 +18,12 @@ that is simple and easy to use without reducing the performance of the code
 
 Clone the repository into your computer by executing the following command in the terminal 
 ```
-git clone 
+git clone https://github.com/prithvitewatia/matrix_h
 ```
 
 cd in the the repository
 ```
-cd 
+cd matrix_h
 ```
 
 Run the following command
