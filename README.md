@@ -60,16 +60,16 @@ Happy coding!
 ## EXAMPLES
 
 A program to add to matrices and check if the result is equal to third matrix.
-![](\doc_images\matrix_add_example_code.png)
+![example](https://github.com/prithvitewatia/matrix_h/blob/master/doc_images/matrix_add_example_code.png?raw=true)
 
 The output of the above program
-![](\doc_images\matrix_add_output.png)
+![example](https://github.com/prithvitewatia/matrix_h/blob/master/doc_images/matrix_add_output.png?raw=true)
 
 Here is another example in which we calculate rank and determinant.
-![](\doc_images\rank_det_example.png)
+![example](https://github.com/prithvitewatia/matrix_h/blob/master/doc_images/rank_det_example.png?raw=true)
 
 Here is its output
-![](\doc_images\rank_det_output.png)
+![example](https://github.com/prithvitewatia/matrix_h/blob/master/doc_images/rank_det_output.png?raw=true)
 
 ### CAUTION
 - If x and y are two matrices do not use statements such as x=y to copy the contents of y into x.
