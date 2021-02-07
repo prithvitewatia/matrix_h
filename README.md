@@ -1,7 +1,8 @@
 # Libmatrix
 
-Libmatrix is a fast, efficient and easy to use **C linear algerbra library**.
-[![Documentation Status](https://readthedocs.org/projects/matrix-h/badge/?version=latest)](https://matrix-h.readthedocs.io/en/latest/?badge=latest)
+Libmatrix is a fast, efficient and easy to use **C linear algerbra library**.  
+Documentation: [![Documentation Status](https://readthedocs.org/projects/matrix-h/badge/?version=latest)](https://matrix-h.readthedocs.io/en/latest/?badge=latest)  
+License: [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## MOTIVATION
 
@@ -34,8 +35,8 @@ make libmatrix.a
 
 If everything runs fine you will see files libmatrix.a and matrix.o generated in the directory.
 If not please make sure that you have **gcc** and **make** installed and set on the **PATH**.
-Link to
-**gcc**: [gcc](https://sourceforge.net/projects/mingw-w64/)
+Link to  
+**gcc**: [gcc](https://sourceforge.net/projects/mingw-w64/)  
 **make**: [make](https://sourceforge.net/projects/gnuwin32/files/make/3.81/make-3.81.exe/download?use_mirror=excellmedia&download=)
 
 Congrats your library is now generated
