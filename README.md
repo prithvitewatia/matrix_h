@@ -1,6 +1,7 @@
 # Libmatrix
 
 Libmatrix is a fast, efficient and easy to use **C linear algerbra library**.
+[![Documentation Status](https://readthedocs.org/projects/matrix-h/badge/?version=latest)](https://matrix-h.readthedocs.io/en/latest/?badge=latest)
 
 ## MOTIVATION
 
@@ -70,6 +71,8 @@ Here is another example in which we calculate rank and determinant.
 
 Here is its output
 ![example](https://github.com/prithvitewatia/matrix_h/blob/master/doc_images/rank_det_output.png?raw=true)
+
+For official documentation visit [matrix-h documentation](https://matrix-h.readthedocs.io/en/latest/?badge=latest)
 
 ### CAUTION
 - If x and y are two matrices do not use statements such as x=y to copy the contents of y into x.
