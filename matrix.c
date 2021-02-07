@@ -639,20 +639,20 @@ matrix solvematrix(matrix coeff_mat,matrix val_mat)
         }
     }
     int n=aug_matrix.row;
-    matrix sol_vector=new_matrix(n,1);
+    matrix sol_vector=new_matrix(1,n);
 
     double xn=get_value(aug_matrix,n-1,n)/get_value(aug_matrix,n-1,n-1);
-    set_value(&sol_vector,sol_vector.row-1,0,xn);
+    set_value(&sol_vector,0,sol_vector.column-1,xn);
     
     for(int i=n-2;i>=0;i--)
     {
         double diff_val=0;
         for(int j=i+1;j<n;j++)
         {
-            diff_val+=get_value(aug_matrix,i,j)*get_value(sol_vector,j,0);
+            diff_val+=get_value(aug_matrix,i,j)*get_value(sol_vector,0,j);
         }
         double x_sol=(get_value(aug_matrix,i,n)-diff_val)/get_value(aug_matrix,i,i);
-        set_value(&sol_vector,i,0,x_sol);
+        set_value(&sol_vector,0,i,x_sol);
     }
     delete_matrix(&aug_matrix);
     return sol_vector;

@@ -1,0 +1,931 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Functions and Examples &mdash; Matrix_h 1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Caution" href="Caution.html" />
+    <link rel="prev" title="Welcome to Matrix_h’s documentation!" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Matrix_h
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Functions and Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#new-matrix">new_matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#array-to-matrix">array_to_matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#show-matrix">show_matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#get-value">get_value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#set-value">set_value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#set-all-value">set_all_value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#delete-matrix">delete_matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#matrix-rowcount">matrix_rowcount</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#matrix-columncount">matrix_columncount</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#copy-matrix">copy_matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#matrix-dot">matrix_dot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#matrix-isequal">matrix_isequal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#submatrix">submatrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#add-matrix">add_matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sum-matrix">sum_matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#multiply-matrix">multiply_matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#transpose-matrix">transpose_matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#power-matrix">power_matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#determinant">determinant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#concat-side">concat_side</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#concat-down">concat_down</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#rank">rank</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#inverse">inverse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#solvematrix">solvematrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#gauss-siedel">gauss_siedel</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Caution.html">Caution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Feedback.html">Feedback</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Matrix_h</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Functions and Examples</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/func_examples.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="functions-and-examples">
+<h1>Functions and Examples<a class="headerlink" href="#functions-and-examples" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="new-matrix">
+<h2>new_matrix<a class="headerlink" href="#new-matrix" title="Permalink to this headline">¶</a></h2>
+<p>Help for function new_matrix</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">matrix</span> <span class="n">new_matrix</span><span class="p">(</span><span class="nb">int</span> <span class="n">row</span><span class="p">,</span><span class="nb">int</span> <span class="n">column</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Returns a <strong>NULL</strong> matrix of dimensions row x column.
+Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include&lt;stdio.h&gt;</span>
+<span class="c1">#include&lt;matrix.h&gt;</span>
+
+<span class="nb">int</span> <span class="n">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">matrix</span> <span class="n">a</span><span class="o">=</span><span class="n">new_matrix</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span>
+    <span class="n">show_matrix</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="array-to-matrix">
+<h2>array_to_matrix<a class="headerlink" href="#array-to-matrix" title="Permalink to this headline">¶</a></h2>
+<p>Help for function array_to_matrix</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">matrix</span> <span class="n">array_to_matrix</span><span class="p">(</span><span class="nb">int</span> <span class="n">row</span><span class="p">,</span> <span class="nb">int</span> <span class="n">column</span><span class="p">,</span><span class="n">double</span> <span class="o">*</span><span class="n">values</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Converts a array of type double to row x column matrix according to row major
+format. <strong>Alert</strong> The number of elements in the array must be equal to row times column.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include&lt;stdio.h&gt;</span>
+<span class="c1">#include&lt;matrix.h&gt;</span>
+
+<span class="nb">int</span> <span class="n">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">double</span> <span class="n">a</span><span class="p">[]</span><span class="o">=</span><span class="p">{</span>
+    <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span>
+    <span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span>
+    <span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span>
+    <span class="p">};</span>
+    <span class="n">matrix</span> <span class="n">a_mat</span><span class="o">=</span><span class="n">array_to_matrix</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">a</span><span class="p">);</span>
+    <span class="n">show_matrix</span><span class="p">(</span><span class="n">a_mat</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="show-matrix">
+<h2>show_matrix<a class="headerlink" href="#show-matrix" title="Permalink to this headline">¶</a></h2>
+<p>Help for function show matrix</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">show_matrix</span><span class="p">(</span><span class="n">matrix</span> <span class="n">m</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Displays the matrix on the stdout (standard output). Formatting is 10 column
+and rounded to 4 decimal places. Matrix can also be displayed in
+custom formatting by accessing the values of matrix with the get_value function.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include&lt;stdio.h&gt;</span>
+<span class="c1">#include&lt;matrix.h&gt;</span>
+
+<span class="nb">int</span> <span class="n">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">matrix</span> <span class="n">a</span><span class="o">=</span><span class="n">new_matrix</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
+    <span class="n">show_matrix</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="get-value">
+<h2>get_value<a class="headerlink" href="#get-value" title="Permalink to this headline">¶</a></h2>
+<p>Help for function get_value</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">double</span> <span class="n">get_value</span><span class="p">(</span><span class="n">matrix</span> <span class="n">m</span><span class="p">,</span><span class="nb">int</span> <span class="n">row</span><span class="p">,</span><span class="nb">int</span> <span class="n">column</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Returns the value of matrix at index row,column.
+<strong>Alert</strong> Row and column value must lie within the dimensions of the matrix.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include&lt;stdio.h&gt;</span>
+<span class="c1">#include&lt;matrix.h&gt;</span>
+
+<span class="nb">int</span> <span class="n">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">double</span> <span class="n">a</span><span class="p">[]</span><span class="o">=</span><span class="p">{</span>
+        <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span>
+        <span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span>
+        <span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span>
+    <span class="p">};</span>
+    <span class="n">matrix</span> <span class="n">a_mat</span><span class="o">=</span><span class="n">array_to_matrix</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">a</span><span class="p">);</span>
+    <span class="n">double</span> <span class="n">val_21</span><span class="o">=</span><span class="n">get_value</span><span class="p">(</span><span class="n">a_mat</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%f</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">val_21</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="set-value">
+<h2>set_value<a class="headerlink" href="#set-value" title="Permalink to this headline">¶</a></h2>
+<p>Help for function set_value</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">set_value</span><span class="p">(</span><span class="n">matrix</span> <span class="o">*</span><span class="n">m</span><span class="p">,</span><span class="nb">int</span> <span class="n">row</span><span class="p">,</span><span class="nb">int</span> <span class="n">column</span><span class="p">,</span><span class="n">double</span> <span class="n">value</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Sets the value of matrix at index row, column.
+<strong>Alert</strong> Value of row and column must lie within the dimensions of matrix.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include&lt;stdio.h&gt;</span>
+<span class="c1">#include&lt;matrix.h&gt;</span>
+
+<span class="nb">int</span> <span class="n">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">matrix</span> <span class="n">a</span><span class="o">=</span><span class="n">new_matrix</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
+    <span class="n">set_value</span><span class="p">(</span><span class="o">&amp;</span><span class="n">a</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">);</span>
+    <span class="n">show_matrix</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="set-all-value">
+<h2>set_all_value<a class="headerlink" href="#set-all-value" title="Permalink to this headline">¶</a></h2>
+<p>Help for function set_all_value</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">set_all_value</span><span class="p">(</span><span class="n">matrix</span> <span class="o">*</span><span class="n">m</span><span class="p">,</span><span class="n">double</span> <span class="n">value</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Sets all the values of the matrix to the supplied value.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include&lt;stdio.h&gt;</span>
+<span class="c1">#include&lt;matrix.h&gt;</span>
+
+<span class="nb">int</span> <span class="n">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">matrix</span> <span class="n">a</span><span class="o">=</span><span class="n">new_matrix</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span>
+    <span class="n">set_all_value</span><span class="p">(</span><span class="o">&amp;</span><span class="n">a</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+    <span class="n">show_matrix</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="delete-matrix">
+<h2>delete_matrix<a class="headerlink" href="#delete-matrix" title="Permalink to this headline">¶</a></h2>
+<p>Help for function delete_matrix</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">delete_matrix</span><span class="p">(</span><span class="n">matrix</span> <span class="o">*</span><span class="n">m</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Deletes the matrix and frees its memory.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include&lt;stdio.h&gt;</span>
+<span class="c1">#include&lt;matrix.h&gt;</span>
+
+<span class="nb">int</span> <span class="n">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">matrix</span> <span class="n">a</span><span class="o">=</span><span class="n">new_matrix</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+    <span class="n">delete_matrix</span><span class="p">(</span><span class="o">&amp;</span><span class="n">a</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="matrix-rowcount">
+<h2>matrix_rowcount<a class="headerlink" href="#matrix-rowcount" title="Permalink to this headline">¶</a></h2>
+<p>Help for function matrix_rowcount.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span> <span class="n">matrix_rowcount</span><span class="p">(</span><span class="n">matrix</span> <span class="n">m</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Returns the number of rows in matrix.
+Number of rows in the matrix can also be accessed by matrix_name.row</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include&lt;stdio.h&gt;</span>
+<span class="c1">#include&lt;matrix.h&gt;</span>
+
+<span class="nb">int</span> <span class="n">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">matrix</span> <span class="n">a</span><span class="o">=</span><span class="n">new_matrix</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+    <span class="nb">int</span> <span class="n">m_row</span><span class="o">=</span><span class="n">matrix_rowcount</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%d</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">m_row</span><span class="p">);</span>
+    <span class="o">//</span><span class="n">Other</span> <span class="n">way</span> <span class="n">of</span> <span class="n">getting</span> <span class="n">row</span> <span class="n">count</span>
+    <span class="n">m_row</span><span class="o">=</span><span class="n">a</span><span class="o">.</span><span class="n">row</span><span class="p">;</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%d</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">m_row</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="matrix-columncount">
+<h2>matrix_columncount<a class="headerlink" href="#matrix-columncount" title="Permalink to this headline">¶</a></h2>
+<p>Help for function matrix_columncount.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span> <span class="n">matrix_columncount</span><span class="p">(</span><span class="n">matrix</span> <span class="n">m</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Returns the number of columns in a matrix.
+Number of columns can also be accessed by matrix_name.column</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include&lt;stdio.h&gt;</span>
+<span class="c1">#include&lt;matrix.h&gt;</span>
+
+<span class="nb">int</span> <span class="n">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">matrix</span> <span class="n">a</span><span class="o">=</span><span class="n">new_matrix</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">);</span>
+    <span class="nb">int</span> <span class="n">m_column</span><span class="o">=</span><span class="n">matrix_columncount</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%d</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">m_column</span><span class="p">);</span>
+    <span class="o">//</span><span class="n">Other</span> <span class="n">way</span> <span class="n">of</span> <span class="n">getting</span> <span class="n">column</span> <span class="n">count</span>
+    <span class="n">m_column</span><span class="o">=</span><span class="n">a</span><span class="o">.</span><span class="n">column</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%d</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">m_column</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="copy-matrix">
+<h2>copy_matrix<a class="headerlink" href="#copy-matrix" title="Permalink to this headline">¶</a></h2>
+<p>Help for function copy_matrix</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">matrix</span> <span class="n">copy_matrix</span><span class="p">(</span><span class="n">matrix</span> <span class="n">m</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Copies the contents of a matrix into other matrix.
+<strong>Very important function to avoid shallow copying of contents</strong>
+Also discussed in the Caution page.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include&lt;stdio.h&gt;</span>
+<span class="c1">#include&lt;matrix.h&gt;</span>
+
+<span class="nb">int</span> <span class="n">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">matrix</span> <span class="n">a</span><span class="o">=</span><span class="n">new_matrix</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+    <span class="n">set_all_value</span><span class="p">(</span><span class="o">&amp;</span><span class="n">a</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+    <span class="n">matrix</span> <span class="n">b</span><span class="o">=</span><span class="n">new_matrix</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
+    <span class="n">set_all_value</span><span class="p">(</span><span class="o">&amp;</span><span class="n">b</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
+    <span class="o">//</span><span class="n">Copying</span> <span class="n">b</span> <span class="n">into</span> <span class="n">a</span>
+    <span class="n">a</span><span class="o">=</span><span class="n">copy_matrix</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>
+    <span class="o">//</span> <span class="n">a</span> <span class="ow">and</span> <span class="n">b</span> <span class="n">now</span> <span class="n">are</span> <span class="n">both</span> <span class="n">matrices</span> <span class="n">of</span> <span class="n">dim</span> <span class="mi">3</span><span class="n">x2</span> <span class="n">having</span> <span class="nb">all</span>
+    <span class="o">//</span><span class="n">values</span> <span class="nb">set</span> <span class="n">to</span> <span class="mi">2</span> <span class="n">but</span> <span class="n">further</span> <span class="n">changes</span> <span class="ow">in</span> <span class="n">b</span> <span class="n">will</span> <span class="ow">not</span> <span class="n">affect</span> <span class="n">a</span><span class="o">.</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="matrix-dot">
+<h2>matrix_dot<a class="headerlink" href="#matrix-dot" title="Permalink to this headline">¶</a></h2>
+<p>Help for function matrix_dot</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">double</span> <span class="n">matrix_dot</span><span class="p">(</span><span class="n">matrix</span> <span class="n">m1</span><span class="p">,</span><span class="n">matrix</span> <span class="n">m2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Returns the dot product for two  row vectors (matrices with 1 row)
+<strong>Alert</strong> Both row vectors should have same number of columns.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include&lt;stdio.h&gt;</span>
+<span class="c1">#include&lt;matrix.h&gt;</span>
+
+<span class="nb">int</span> <span class="n">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">double</span> <span class="n">a</span><span class="p">[]</span><span class="o">=</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">};</span>
+    <span class="n">double</span> <span class="n">b</span><span class="p">[]</span><span class="o">=</span><span class="p">{</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">};</span>
+
+    <span class="n">matrix</span> <span class="n">a_mat</span><span class="o">=</span><span class="n">array_to_matrix</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">a</span><span class="p">);</span>
+    <span class="n">matrix</span> <span class="n">b_mat</span><span class="o">=</span><span class="n">array_to_matrix</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">b</span><span class="p">);</span>
+
+    <span class="n">double</span> <span class="n">dtp</span><span class="o">=</span><span class="n">matrix_dot</span><span class="p">(</span><span class="n">a_mat</span><span class="p">,</span><span class="n">b_mat</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%f</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">dtp</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="matrix-isequal">
+<h2>matrix_isequal<a class="headerlink" href="#matrix-isequal" title="Permalink to this headline">¶</a></h2>
+<p>Help for function matrix_isequal</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span> <span class="n">matrix_isequal</span><span class="p">(</span><span class="n">matrix</span> <span class="n">m1</span><span class="p">,</span><span class="n">matrix</span> <span class="n">m2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Checks if matrix m1 is equal to matrix m2
+<strong>Matrix should have same dimensions</strong>
+<strong>Since we are using double we cannot use == to check for equality</strong>
+<strong>Hence if the absolute value of the difference value lies within 1e-7</strong>
+<strong>we say the corresponding values are equal</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include&lt;stdio.h&gt;</span>
+<span class="c1">#include&lt;matrix.h&gt;</span>
+
+<span class="nb">int</span> <span class="n">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">double</span> <span class="n">a</span><span class="p">[]</span><span class="o">=</span><span class="p">{</span>
+    <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span>
+    <span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span>
+    <span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span>
+    <span class="p">};</span>
+    <span class="n">matrix</span> <span class="n">a_mat</span><span class="o">=</span><span class="n">array_to_matrix</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">a</span><span class="p">);</span>
+    <span class="n">matrix</span> <span class="n">b_mat</span><span class="o">=</span><span class="n">array_to_matrix</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">a</span><span class="p">);</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">matrix_isequal</span><span class="p">(</span><span class="n">a_mat</span><span class="p">,</span><span class="n">b_mat</span><span class="p">)):</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;The two matrices are equal</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+    <span class="k">else</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;The two matrices are not equal</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="submatrix">
+<h2>submatrix<a class="headerlink" href="#submatrix" title="Permalink to this headline">¶</a></h2>
+<p>Help for function submatrix</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">matrix</span> <span class="n">submatrix</span><span class="p">(</span><span class="n">matrix</span> <span class="n">m</span><span class="p">,</span><span class="nb">int</span> <span class="n">row_start</span><span class="p">,</span><span class="nb">int</span> <span class="n">column_start</span><span class="p">,</span><span class="nb">int</span> <span class="n">row_end</span><span class="p">,</span><span class="nb">int</span> <span class="n">column_end</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Returns a submatrix of matrix m
+with dimensions (row_end-row_start+1) x (column_end-column_start+1)
+<strong>Supplied dimensions must lie within the dimensions of the matrix</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include&lt;stdio.h&gt;</span>
+<span class="c1">#include&lt;matrix.h&gt;</span>
+
+<span class="nb">int</span> <span class="n">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">double</span> <span class="n">a</span><span class="p">[]</span><span class="o">=</span><span class="p">{</span>
+        <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span>
+        <span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span>
+        <span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span>
+    <span class="p">};</span>
+    <span class="n">matrix</span> <span class="n">a_mat</span><span class="o">=</span><span class="n">array_to_matrix</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">a</span><span class="p">);</span>
+    <span class="n">matrix</span> <span class="n">sub_a</span><span class="o">=</span><span class="n">submatrix</span><span class="p">(</span><span class="n">a_mat</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
+    <span class="o">//</span><span class="n">Returns</span> <span class="mi">1</span><span class="n">x2</span> <span class="n">matrix</span> <span class="k">with</span> <span class="n">values</span> <span class="mi">5</span><span class="p">,</span><span class="mi">6</span>
+    <span class="n">show_matrix</span><span class="p">(</span><span class="n">sub_a</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="add-matrix">
+<h2>add_matrix<a class="headerlink" href="#add-matrix" title="Permalink to this headline">¶</a></h2>
+<p>Help for function add_matrix</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">matrix</span> <span class="n">add_matrix</span><span class="p">(</span><span class="n">matrix</span> <span class="n">m1</span><span class="p">,</span><span class="n">matrix</span> <span class="n">m2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Return the addition of two matrices.
+<strong>Dimensions of two matrices must agree</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include&lt;stdio.h&gt;</span>
+<span class="c1">#include&lt;matrix.h&gt;</span>
+
+<span class="nb">int</span> <span class="n">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">double</span> <span class="n">a</span><span class="p">[]</span><span class="o">=</span><span class="p">{</span>
+        <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span>
+        <span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span>
+        <span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span>
+    <span class="p">};</span>
+    <span class="n">double</span> <span class="n">b</span><span class="p">[]</span><span class="o">=</span><span class="p">{</span>
+        <span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span>
+        <span class="mi">8</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span>
+        <span class="mi">14</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="mi">18</span>
+    <span class="p">};</span>
+
+    <span class="n">matrix</span> <span class="n">a_mat</span><span class="o">=</span><span class="n">array_to_matrix</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">a</span><span class="p">);</span>
+    <span class="n">matrix</span> <span class="n">b_mat</span><span class="o">=</span><span class="n">array_to_matrix</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">b</span><span class="p">);</span>
+    <span class="n">matrix</span> <span class="n">c</span><span class="o">=</span><span class="n">add_matrix</span><span class="p">(</span><span class="n">a_mat</span><span class="p">,</span><span class="n">b_mat</span><span class="p">);</span>
+    <span class="n">show_matrix</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="sum-matrix">
+<h2>sum_matrix<a class="headerlink" href="#sum-matrix" title="Permalink to this headline">¶</a></h2>
+<p>Help for function sum_matrix</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">matrix</span> <span class="n">sum_matrix</span><span class="p">(</span><span class="nb">int</span> <span class="n">args_count</span><span class="p">,</span><span class="n">matrix</span> <span class="n">m</span><span class="p">,</span><span class="o">...</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>An efficient way of adding more than 2 matrices.
+The first parameter contains the number of matrices to be added.
+The following parameters are the matrices whose sum needs to be calculated.
+<strong>Dimensions of all the matrices must agree</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include&lt;stdio.h&gt;</span>
+<span class="c1">#include&lt;matrix.h&gt;</span>
+
+<span class="nb">int</span> <span class="n">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">double</span> <span class="n">a</span><span class="p">[]</span><span class="o">=</span><span class="p">{</span>
+    <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span>
+    <span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span>
+    <span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span>
+    <span class="p">};</span>
+    <span class="n">double</span> <span class="n">b</span><span class="p">[]</span><span class="o">=</span><span class="p">{</span>
+    <span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span>
+    <span class="mi">8</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span>
+    <span class="mi">14</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="mi">18</span>
+    <span class="p">};</span>
+    <span class="n">double</span> <span class="n">c</span><span class="p">[]</span><span class="o">=</span><span class="p">{</span>
+    <span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span>
+    <span class="mi">12</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">18</span><span class="p">,</span>
+    <span class="mi">21</span><span class="p">,</span><span class="mi">24</span><span class="p">,</span><span class="mi">27</span>
+    <span class="p">};</span>
+
+    <span class="n">matrix</span> <span class="n">a_mat</span><span class="o">=</span><span class="n">array_to_matrix</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">a</span><span class="p">);</span>
+    <span class="n">matrix</span> <span class="n">b_mat</span><span class="o">=</span><span class="n">array_to_matrix</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">b</span><span class="p">);</span>
+    <span class="n">matrix</span> <span class="n">c_mat</span><span class="o">=</span><span class="n">array_to_matrix</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">c</span><span class="p">);</span>
+
+    <span class="n">matrix</span> <span class="n">d</span><span class="o">=</span><span class="n">sum_matrix</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">);</span>
+    <span class="n">show_matrix</span><span class="p">(</span><span class="n">d</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="multiply-matrix">
+<h2>multiply_matrix<a class="headerlink" href="#multiply-matrix" title="Permalink to this headline">¶</a></h2>
+<p>Help for function multiply_matrix</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">matrix</span> <span class="n">multiply_matrix</span><span class="p">(</span><span class="n">matrix</span> <span class="n">m1</span><span class="p">,</span><span class="n">matrix</span> <span class="n">m2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Returns the product of two matrices.
+<strong>m1.column must be equal to m2.row for product to exist</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include&lt;stdio.h&gt;</span>
+<span class="c1">#include&lt;matrix.h&gt;</span>
+
+<span class="nb">int</span> <span class="n">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">double</span> <span class="n">a</span><span class="p">[]</span><span class="o">=</span><span class="p">{</span>
+        <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span>
+        <span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span>
+        <span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span>
+    <span class="p">};</span>
+    <span class="n">double</span> <span class="n">b</span><span class="p">[]</span><span class="o">=</span><span class="p">{</span>
+    <span class="mi">1</span><span class="p">,</span>
+    <span class="mi">2</span><span class="p">,</span>
+    <span class="mi">3</span>
+    <span class="p">};</span>
+
+    <span class="n">matrix</span> <span class="n">a_mat</span><span class="o">=</span><span class="n">array_to_matrix</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">a</span><span class="p">);</span>
+    <span class="n">matrix</span> <span class="n">b_mat</span><span class="o">=</span><span class="n">array_to_matrix</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">b</span><span class="p">);</span>
+    <span class="n">matrix</span> <span class="n">c</span><span class="o">=</span><span class="n">multiply_matrix</span><span class="p">(</span><span class="n">a_mat</span><span class="p">,</span><span class="n">b_mat</span><span class="p">);</span>
+    <span class="n">show_matrix</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="transpose-matrix">
+<h2>transpose_matrix<a class="headerlink" href="#transpose-matrix" title="Permalink to this headline">¶</a></h2>
+<p>Help for function transpose_matrix</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">matrix</span> <span class="n">transpose_matrix</span><span class="p">(</span><span class="n">matrix</span> <span class="n">m</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Returns a new matrix which is transpose of the product matrix.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include&lt;stdio.h&gt;</span>
+<span class="c1">#include&lt;matrix.h&gt;</span>
+
+<span class="nb">int</span> <span class="n">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">double</span> <span class="n">a</span><span class="p">[]</span><span class="o">=</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">};</span>
+    <span class="n">matrix</span> <span class="n">a_mat</span><span class="o">=</span><span class="n">array_to_matrix</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">a</span><span class="p">);</span>
+    <span class="n">matrix</span> <span class="n">a_transpose</span><span class="o">=</span><span class="n">transpose_matrix</span><span class="p">(</span><span class="n">a_mat</span><span class="p">);</span>
+    <span class="n">show_matrix</span><span class="p">(</span><span class="n">a_transpose</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="power-matrix">
+<h2>power_matrix<a class="headerlink" href="#power-matrix" title="Permalink to this headline">¶</a></h2>
+<p>Help for function power_matrix</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">matrix</span> <span class="n">power_matrix</span><span class="p">(</span><span class="n">matrix</span> <span class="n">m</span><span class="p">,</span><span class="nb">int</span> <span class="nb">pow</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Returns a new matrix which is provided matrix raised to the given power.
+<strong>pow must be greater than or equal to 0</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include&lt;stdio.h&gt;</span>
+<span class="c1">#include&lt;matrix.h&gt;</span>
+
+<span class="nb">int</span> <span class="n">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">double</span> <span class="n">a</span><span class="p">[]</span><span class="o">=</span><span class="p">{</span>
+        <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span>
+        <span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span>
+        <span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span>
+    <span class="p">};</span>
+
+    <span class="n">matrix</span> <span class="n">a_mat</span><span class="o">=</span><span class="n">array_to_matrix</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">a</span><span class="p">);</span>
+    <span class="n">matrix</span> <span class="n">mat_pow3</span><span class="o">=</span><span class="n">power_matrix</span><span class="p">(</span><span class="n">a_mat</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span>
+    <span class="n">show_matrix</span><span class="p">(</span><span class="n">mat_pow3</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="determinant">
+<h2>determinant<a class="headerlink" href="#determinant" title="Permalink to this headline">¶</a></h2>
+<p>Help for function determinant</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">double</span> <span class="n">determinant</span><span class="p">(</span><span class="n">matrix</span> <span class="n">m</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Returns the determinant for the matrix.
+<strong>Matrix must be a square matrix</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include&lt;stdio.h&gt;</span>
+<span class="c1">#include&lt;matrix.h&gt;</span>
+
+<span class="nb">int</span> <span class="n">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">double</span> <span class="n">a</span><span class="p">[]</span><span class="o">=</span><span class="p">{</span>
+        <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span>
+        <span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span>
+        <span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span>
+    <span class="p">};</span>
+
+    <span class="n">matrix</span> <span class="n">a_mat</span><span class="o">=</span><span class="n">array_to_matrix</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">a</span><span class="p">);</span>
+    <span class="n">double</span> <span class="n">det</span><span class="o">=</span><span class="n">determinant</span><span class="p">(</span><span class="n">a_mat</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%f</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">det</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="concat-side">
+<h2>concat_side<a class="headerlink" href="#concat-side" title="Permalink to this headline">¶</a></h2>
+<p>Help for function concat_side</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">matrix</span> <span class="n">concat_side</span><span class="p">(</span><span class="n">matrix</span> <span class="n">m1</span><span class="p">,</span><span class="n">matrix</span> <span class="n">m2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Returns a new matrix in which second matrix m2 is concatenated to the right of
+first matrix.
+<strong>Number of rows in both the matrices should be same.</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include&lt;stdio.h&gt;</span>
+<span class="c1">#include&lt;matrix.h&gt;</span>
+
+<span class="nb">int</span> <span class="n">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">double</span> <span class="n">a</span><span class="p">[]</span><span class="o">=</span><span class="p">{</span>
+        <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span>
+        <span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span>
+        <span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span>
+    <span class="p">};</span>
+    <span class="n">double</span> <span class="n">b</span><span class="p">[]</span><span class="o">=</span><span class="p">{</span>
+        <span class="mi">1</span><span class="p">,</span>
+        <span class="mi">2</span><span class="p">,</span>
+        <span class="mi">3</span>
+    <span class="p">};</span>
+    <span class="n">matrix</span> <span class="n">a_mat</span><span class="o">=</span><span class="n">array_to_matrix</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">a</span><span class="p">);</span>
+    <span class="n">matrix</span> <span class="n">b_mat</span><span class="o">=</span><span class="n">array_to_matrix</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">b</span><span class="p">);</span>
+    <span class="n">matrix</span> <span class="n">mat_concat</span><span class="o">=</span><span class="n">concat_side</span><span class="p">(</span><span class="n">a_mat</span><span class="p">,</span><span class="n">b_mat</span><span class="p">);</span>
+    <span class="n">show_matrix</span><span class="p">(</span><span class="n">mat_concat</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="concat-down">
+<h2>concat_down<a class="headerlink" href="#concat-down" title="Permalink to this headline">¶</a></h2>
+<p>Help for function concat_down</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">matrix</span> <span class="n">concat_down</span><span class="p">(</span><span class="n">matrix</span> <span class="n">m1</span><span class="p">,</span><span class="n">matrix</span> <span class="n">m2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Returns a new matrix in which second matrix m2 is concatenated below the first matrix.
+<strong>Number of columns in both the matrices should be same.</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include&lt;stdio.h&gt;</span>
+<span class="c1">#include&lt;matrix.h&gt;</span>
+
+<span class="nb">int</span> <span class="n">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">double</span> <span class="n">a</span><span class="p">[]</span><span class="o">=</span><span class="p">{</span>
+        <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span>
+        <span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span>
+        <span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span>
+    <span class="p">};</span>
+    <span class="n">double</span> <span class="n">b</span><span class="p">[]</span><span class="o">=</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">};</span>
+    <span class="n">matrix</span> <span class="n">a_mat</span><span class="o">=</span><span class="n">array_to_matrix</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">a</span><span class="p">);</span>
+    <span class="n">matrix</span> <span class="n">b_mat</span><span class="o">=</span><span class="n">array_to_matrix</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">b</span><span class="p">);</span>
+    <span class="n">matrix</span> <span class="n">mat_concat</span><span class="o">=</span><span class="n">concat_down</span><span class="p">(</span><span class="n">a_mat</span><span class="p">,</span><span class="n">b_mat</span><span class="p">);</span>
+    <span class="n">show_matrix</span><span class="p">(</span><span class="n">mat_concat</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="rank">
+<h2>rank<a class="headerlink" href="#rank" title="Permalink to this headline">¶</a></h2>
+<p>Help for function rank</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span> <span class="n">rank</span><span class="p">(</span><span class="n">matrix</span> <span class="n">m</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Returns the rank ( linearly independent rows or columns in the matrix) of the matrix.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include&lt;stdio.h&gt;</span>
+<span class="c1">#include&lt;matrix.h&gt;</span>
+
+<span class="nb">int</span> <span class="n">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">double</span> <span class="n">a</span><span class="p">[]</span><span class="o">=</span><span class="p">{</span>
+    <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span>
+    <span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span>
+    <span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span>
+    <span class="p">};</span>
+    <span class="n">matrix</span> <span class="n">a_mat</span><span class="o">=</span><span class="n">array_to_matrix</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">a</span><span class="p">);</span>
+    <span class="nb">int</span> <span class="n">rank_a_mat</span><span class="o">=</span><span class="n">rank</span><span class="p">(</span><span class="n">a_mat</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%d</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">rank_a_mat</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="inverse">
+<h2>inverse<a class="headerlink" href="#inverse" title="Permalink to this headline">¶</a></h2>
+<p>Help for function inverse</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">matrix</span> <span class="n">inverse</span><span class="p">(</span><span class="n">matrix</span> <span class="n">m</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Returns a new matrix which is inverse of the given matrix provided the inverse exists.
+<strong>Given Matrix must be a square matrix.</strong>
+<strong>If the inverse does not exists then it writes a message on the</strong>
+<strong>standard error that inverse does not exist</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include&lt;stdio.h&gt;</span>
+<span class="c1">#include&lt;matrix.h&gt;</span>
+
+<span class="nb">int</span> <span class="n">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">double</span> <span class="n">a</span><span class="p">[]</span><span class="o">=</span><span class="p">{</span>
+        <span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mf">1.5</span><span class="p">,</span>
+        <span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span>
+    <span class="p">};</span>
+    <span class="n">matrix</span> <span class="n">a_mat</span><span class="o">=</span><span class="n">array_to_matrix</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">a</span><span class="p">);</span>
+    <span class="n">matrix</span> <span class="n">a_mat_inv</span><span class="o">=</span><span class="n">inverse</span><span class="p">(</span><span class="n">a_mat</span><span class="p">);</span>
+    <span class="n">show_matrix</span><span class="p">(</span><span class="n">a_mat_inv</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="solvematrix">
+<h2>solvematrix<a class="headerlink" href="#solvematrix" title="Permalink to this headline">¶</a></h2>
+<p>Help for function solvematrix</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">matrix</span> <span class="n">solvematrix</span><span class="p">(</span><span class="n">matrix</span> <span class="n">coeff_matrix</span><span class="p">,</span><span class="n">matrix</span> <span class="n">val_mat</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Returns the unique solution of a system of linear equations <strong>(if it exists)</strong> by the
+gauss elimination method else writes <strong>No unique solution exists</strong> on the standard error.
+The solution (if it exists) is returned as a <strong>row vector</strong>.
+If we represent the system as Ax=b then A is coeff_matrix b is val_mat <strong>(column vector)</strong> and
+return value is x.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include&lt;stdio.h&gt;</span>
+<span class="c1">#include&lt;matrix.h&gt;</span>
+
+<span class="nb">int</span> <span class="n">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="o">/*</span> <span class="n">System</span> <span class="n">of</span> <span class="n">equation</span> <span class="ow">is</span>
+        <span class="mh">0x1</span> <span class="o">+</span> <span class="mi">8</span><span class="n">x2</span> <span class="o">+</span> <span class="mi">2</span><span class="n">x3</span> <span class="o">=</span> <span class="o">-</span><span class="mi">7</span>
+        <span class="mi">3</span><span class="n">x1</span> <span class="o">+</span> <span class="mi">5</span><span class="n">x2</span> <span class="o">+</span> <span class="mi">2</span><span class="n">x3</span> <span class="o">=</span> <span class="mi">8</span>
+        <span class="mi">6</span><span class="n">x1</span> <span class="o">+</span> <span class="mi">2</span><span class="n">x2</span> <span class="o">+</span> <span class="mi">8</span><span class="n">x3</span> <span class="o">=</span> <span class="mi">26</span> <span class="o">*/</span>
+    <span class="o">/*</span> <span class="n">Solution</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">system</span> <span class="ow">is</span>
+        <span class="n">x1</span> <span class="o">=</span> <span class="mi">4</span> <span class="p">,</span> <span class="n">x2</span><span class="o">=-</span><span class="mi">1</span> <span class="p">,</span> <span class="n">x3</span><span class="o">=</span><span class="mf">0.5</span> <span class="o">*/</span>
+
+    <span class="n">double</span> <span class="n">a</span><span class="p">[]</span><span class="o">=</span><span class="p">{</span>
+        <span class="mi">0</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span>
+        <span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span>
+        <span class="mi">6</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">8</span>
+    <span class="p">};</span>
+    <span class="n">double</span> <span class="n">b</span><span class="p">[]</span><span class="o">=</span><span class="p">{</span>
+        <span class="o">-</span><span class="mi">7</span><span class="p">,</span>
+        <span class="mi">8</span><span class="p">,</span>
+        <span class="mi">26</span>
+    <span class="p">};</span>
+    <span class="n">matrix</span> <span class="n">coeff_mat</span><span class="o">=</span><span class="n">array_to_matrix</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">a</span><span class="p">);</span>
+    <span class="n">matrix</span> <span class="n">val_mat</span><span class="o">=</span><span class="n">array_to_matrix</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">b</span><span class="p">);</span>
+    <span class="n">matrix</span> <span class="n">sol</span><span class="o">=</span><span class="n">solvematrix</span><span class="p">(</span><span class="n">coeff_mat</span><span class="p">,</span><span class="n">val_mat</span><span class="p">);</span>
+    <span class="n">show_matrix</span><span class="p">(</span><span class="n">sol</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="gauss-siedel">
+<h2>gauss_siedel<a class="headerlink" href="#gauss-siedel" title="Permalink to this headline">¶</a></h2>
+<p>Help for function gauss_siedel</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">matrix</span> <span class="n">gauss_siedel</span><span class="p">(</span><span class="n">matrix</span> <span class="n">coeff</span><span class="p">,</span><span class="n">matrix</span> <span class="n">val_mat</span><span class="p">,</span><span class="n">double</span> <span class="n">tol</span><span class="p">,</span><span class="nb">int</span> <span class="n">iterations</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Returns the solution of a system of linear equations by using the gauss-siedel
+algorithm also known as the Liebmann method.It is an iterative method that can be applied on <strong>any matrix with non-zero diagonal elements</strong>
+though convergence is only guaranteed if the matrix is either strictly diagonal dominant
+or symmetric and positive definite.</p>
+<div class="line-block">
+<div class="line">Here for the system Ax=b:</div>
+<div class="line">A is coeff</div>
+<div class="line">b is val_mat</div>
+<div class="line">tol is tolerance</div>
+<div class="line">iterations stand for the maximum number of iterations allowed.</div>
+</div>
+<p>The solution (if it converges to the required accuracy) is returned as a <strong>row vector</strong>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include&lt;stdio.h&gt;</span>
+<span class="c1">#include&lt;matrix.h&gt;</span>
+
+<span class="nb">int</span> <span class="n">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">double</span> <span class="n">a</span><span class="p">[]</span><span class="o">=</span><span class="p">{</span>
+        <span class="mi">6</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span>
+        <span class="mi">0</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span>
+        <span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">3</span>
+    <span class="p">};</span>
+    <span class="n">double</span> <span class="n">b</span><span class="p">[]</span><span class="o">=</span><span class="p">{</span>
+        <span class="mi">26</span><span class="p">,</span>
+        <span class="o">-</span><span class="mi">7</span><span class="p">,</span>
+        <span class="o">-</span><span class="mf">1.5</span>
+    <span class="p">};</span>
+    <span class="n">matrix</span> <span class="n">coeff_mat</span><span class="o">=</span><span class="n">array_to_matrix</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">a</span><span class="p">);</span>
+    <span class="n">matrix</span> <span class="n">val_mat</span><span class="o">=</span><span class="n">array_to_matrix</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">b</span><span class="p">);</span>
+    <span class="n">matrix</span> <span class="n">sol</span><span class="o">=</span><span class="n">gauss_siedel</span><span class="p">(</span><span class="n">coeff_mat</span><span class="p">,</span><span class="n">val_mat</span><span class="p">,</span><span class="mf">1e-8</span><span class="p">,</span><span class="mi">100</span><span class="p">);</span>
+    <span class="n">show_matrix</span><span class="p">(</span><span class="n">sol</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="Caution.html" class="btn btn-neutral float-right" title="Caution" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to Matrix_h’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Prithvi.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,653 @@
+Functions and Examples
+=======================
+
+new_matrix
+----------
+Help for function new_matrix 
+::
+    matrix new_matrix(int row,int column)
+Returns a **NULL** matrix of dimensions row x column.
+Example
+::
+    #include<stdio.h>
+    #include<matrix.h>
+
+    int main()
+    {
+        matrix a=new_matrix(4,3);
+        show_matrix(a);
+        return 0;
+    }
+
+array_to_matrix
+---------------
+Help for function array_to_matrix
+::
+    matrix array_to_matrix(int row, int column,double *values)
+Converts a array of type double to row x column matrix according to row major
+format. **Alert** The number of elements in the array must be equal to row times column.
+::
+    #include<stdio.h>
+    #include<matrix.h>
+
+    int main()
+    {
+        double a[]={
+        1,2,3,
+        4,5,6,
+        7,8,9
+        };        
+        matrix a_mat=array_to_matrix(3,3,a);
+        show_matrix(a_mat);
+        return 0;
+    }
+
+show_matrix
+------------
+Help for function show matrix
+::
+    void show_matrix(matrix m)
+Displays the matrix on the stdout (standard output). Formatting is 10 column
+and rounded to 4 decimal places. Matrix can also be displayed in
+custom formatting by accessing the values of matrix with the get_value function.
+::
+    #include<stdio.h>
+    #include<matrix.h>
+
+    int main()
+    {
+        matrix a=new_matrix(2,2);
+        show_matrix(a);
+        return 0;
+    }
+
+get_value
+----------
+Help for function get_value
+::
+    double get_value(matrix m,int row,int column)
+Returns the value of matrix at index row,column.
+**Alert** Row and column value must lie within the dimensions of the matrix.
+::
+    #include<stdio.h>
+    #include<matrix.h>
+
+    int main()
+    {
+        double a[]={
+            1,2,3,
+            4,5,6,
+            7,8,9
+        };
+        matrix a_mat=array_to_matrix(3,3,a);
+        double val_21=get_value(a_mat,2,1);
+        printf("%f\n",val_21);
+        return 0;
+    }
+
+set_value
+-----------
+Help for function set_value
+::
+    void set_value(matrix *m,int row,int column,double value)
+Sets the value of matrix at index row, column.
+**Alert** Value of row and column must lie within the dimensions of matrix.
+::
+    #include<stdio.h>
+    #include<matrix.h>
+
+    int main()
+    {
+        matrix a=new_matrix(3,2);
+        set_value(&a,2,1,4);
+        show_matrix(a);
+        return 0;
+    }
+
+set_all_value
+-------------
+Help for function set_all_value
+::
+    void set_all_value(matrix *m,double value)
+Sets all the values of the matrix to the supplied value.
+::
+    #include<stdio.h>
+    #include<matrix.h>
+
+    int main()
+    {
+        matrix a=new_matrix(3,3);
+        set_all_value(&a,1);
+        show_matrix(a);
+        return 0;
+    }
+
+delete_matrix
+-------------
+Help for function delete_matrix
+::
+    void delete_matrix(matrix *m)
+Deletes the matrix and frees its memory.
+::
+    #include<stdio.h>
+    #include<matrix.h>
+
+    int main()
+    {
+        matrix a=new_matrix(2,1);
+        delete_matrix(&a);
+        return 0;
+    }
+
+matrix_rowcount
+---------------
+Help for function matrix_rowcount.
+::
+    int matrix_rowcount(matrix m)
+Returns the number of rows in matrix.
+Number of rows in the matrix can also be accessed by matrix_name.row
+::
+    #include<stdio.h>
+    #include<matrix.h>
+
+    int main()
+    {
+        matrix a=new_matrix(2,1);
+        int m_row=matrix_rowcount(a);
+        printf("%d\n",m_row);
+        //Other way of getting row count
+        m_row=a.row;
+        printf("%d\n",m_row);
+        return 0;
+    }
+
+matrix_columncount
+------------------
+Help for function matrix_columncount.
+::
+    int matrix_columncount(matrix m)
+Returns the number of columns in a matrix.
+Number of columns can also be accessed by matrix_name.column
+::
+    #include<stdio.h>
+    #include<matrix.h>
+
+    int main()
+    {
+        matrix a=new_matrix(3,4);
+        int m_column=matrix_columncount(a);
+        printf("%d\n",m_column);
+        //Other way of getting column count
+        m_column=a.column
+        printf("%d\n",m_column);
+        return 0;
+    }
+
+copy_matrix
+------------
+Help for function copy_matrix
+::
+    matrix copy_matrix(matrix m)
+Copies the contents of a matrix into other matrix.
+**Very important function to avoid shallow copying of contents**
+Also discussed in the Caution page.
+::
+    #include<stdio.h>
+    #include<matrix.h>
+
+    int main()
+    {
+        matrix a=new_matrix(2,1);
+        set_all_value(&a,1);
+        matrix b=new_matrix(3,2);
+        set_all_value(&b,2);
+        //Copying b into a
+        a=copy_matrix(b);
+        // a and b now are both matrices of dim 3x2 having all
+        //values set to 2 but further changes in b will not affect a.
+        return 0; 
+    }
+
+matrix_dot
+-----------
+Help for function matrix_dot
+::
+    double matrix_dot(matrix m1,matrix m2)
+Returns the dot product for two  row vectors (matrices with 1 row)
+**Alert** Both row vectors should have same number of columns.
+::
+    #include<stdio.h>
+    #include<matrix.h>
+
+    int main()
+    {
+        double a[]={1,2,3};
+        double b[]={5,6,7};
+
+        matrix a_mat=array_to_matrix(1,3,a);
+        matrix b_mat=array_to_matrix(1,3,b);
+
+        double dtp=matrix_dot(a_mat,b_mat);
+        printf("%f\n",dtp);
+        return 0;
+    }
+
+matrix_isequal
+--------------
+Help for function matrix_isequal
+::
+    int matrix_isequal(matrix m1,matrix m2)
+Checks if matrix m1 is equal to matrix m2
+**Matrix should have same dimensions**
+**Since we are using double we cannot use == to check for equality**
+**Hence if the absolute value of the difference value lies within 1e-7**
+**we say the corresponding values are equal**
+::
+    #include<stdio.h>
+    #include<matrix.h>
+
+    int main()
+    {
+        double a[]={
+        1,2,3,
+        4,5,6,
+        7,8,9
+        };
+        matrix a_mat=array_to_matrix(3,3,a);
+        matrix b_mat=array_to_matrix(3,3,a);
+        if(matrix_isequal(a_mat,b_mat)):
+            printf("The two matrices are equal\n");
+        else
+            printf("The two matrices are not equal\n");
+        return 0;
+    }
+
+submatrix
+----------
+Help for function submatrix
+::
+    matrix submatrix(matrix m,int row_start,int column_start,int row_end,int column_end)
+Returns a submatrix of matrix m
+with dimensions (row_end-row_start+1) x (column_end-column_start+1)
+**Supplied dimensions must lie within the dimensions of the matrix**
+::
+    #include<stdio.h>
+    #include<matrix.h>
+
+    int main()
+    {
+        double a[]={
+            1,2,3,
+            4,5,6,
+            7,8,9
+        };
+        matrix a_mat=array_to_matrix(3,3,a);
+        matrix sub_a=submatrix(a_mat,1,1,1,2);
+        //Returns 1x2 matrix with values 5,6
+        show_matrix(sub_a);
+        return 0;
+    }
+
+add_matrix
+-----------
+Help for function add_matrix
+::
+    matrix add_matrix(matrix m1,matrix m2)
+Return the addition of two matrices.
+**Dimensions of two matrices must agree**
+::
+    #include<stdio.h>
+    #include<matrix.h>
+
+    int main()
+    {
+        double a[]={
+            1,2,3,
+            4,5,6,
+            7,8,9
+        };
+        double b[]={
+            2,4,6,
+            8,10,12,
+            14,16,18
+        };
+
+        matrix a_mat=array_to_matrix(3,3,a);
+        matrix b_mat=array_to_matrix(3,3,b);
+        matrix c=add_matrix(a_mat,b_mat);
+        show_matrix(c);
+        return 0;
+    }
+
+sum_matrix
+-----------
+Help for function sum_matrix
+::
+    matrix sum_matrix(int args_count,matrix m,...)
+An efficient way of adding more than 2 matrices.
+The first parameter contains the number of matrices to be added.
+The following parameters are the matrices whose sum needs to be calculated.
+**Dimensions of all the matrices must agree**
+::
+    #include<stdio.h>
+    #include<matrix.h>
+
+    int main()
+    {
+        double a[]={
+        1,2,3,
+        4,5,6,
+        7,8,9
+        };
+        double b[]={
+        2,4,6,
+        8,10,12,
+        14,16,18
+        };
+        double c[]={
+        3,6,9,
+        12,15,18,
+        21,24,27
+        };
+
+        matrix a_mat=array_to_matrix(3,3,a);
+        matrix b_mat=array_to_matrix(3,3,b);
+        matrix c_mat=array_to_matrix(3,3,c);
+
+        matrix d=sum_matrix(3,a,b,c);
+        show_matrix(d);
+        return 0;
+    }
+
+multiply_matrix
+----------------
+Help for function multiply_matrix
+::
+    matrix multiply_matrix(matrix m1,matrix m2)
+Returns the product of two matrices.
+**m1.column must be equal to m2.row for product to exist**
+::
+    #include<stdio.h>
+    #include<matrix.h>
+
+    int main()
+    {
+        double a[]={
+            1,2,3,
+            4,5,6,
+            7,8,9
+        };
+        double b[]={
+        1,
+        2,
+        3
+        };
+
+        matrix a_mat=array_to_matrix(3,3,a);
+        matrix b_mat=array_to_matrix(3,1,b);
+        matrix c=multiply_matrix(a_mat,b_mat);
+        show_matrix(c);
+        return 0;
+    }
+
+transpose_matrix
+----------------
+Help for function transpose_matrix
+::
+    matrix transpose_matrix(matrix m)
+Returns a new matrix which is transpose of the product matrix.
+::
+    #include<stdio.h>
+    #include<matrix.h>
+
+    int main()
+    {
+        double a[]={1,2,3};
+        matrix a_mat=array_to_matrix(1,3,a);
+        matrix a_transpose=transpose_matrix(a_mat);
+        show_matrix(a_transpose);
+        return 0;
+    }
+
+power_matrix
+------------
+Help for function power_matrix
+::
+    matrix power_matrix(matrix m,int pow)
+Returns a new matrix which is provided matrix raised to the given power.
+**pow must be greater than or equal to 0**
+::
+    #include<stdio.h>
+    #include<matrix.h>
+
+    int main()
+    {
+        double a[]={
+            1,2,3,
+            4,5,6,
+            7,8,9
+        };
+
+        matrix a_mat=array_to_matrix(3,3,a);
+        matrix mat_pow3=power_matrix(a_mat,3);
+        show_matrix(mat_pow3);
+        return 0;
+    }
+
+determinant
+-----------
+Help for function determinant
+::
+    double determinant(matrix m)
+Returns the determinant for the matrix.
+**Matrix must be a square matrix**
+::
+    #include<stdio.h>
+    #include<matrix.h>
+
+    int main()
+    {
+        double a[]={
+            1,2,3,
+            4,5,6,
+            7,8,9
+        };
+
+        matrix a_mat=array_to_matrix(3,3,a);
+        double det=determinant(a_mat);
+        printf("%f\n",det);
+        return 0;
+    }
+
+concat_side
+-----------
+Help for function concat_side
+::
+    matrix concat_side(matrix m1,matrix m2)
+Returns a new matrix in which second matrix m2 is concatenated to the right of
+first matrix.
+**Number of rows in both the matrices should be same.**
+::
+    #include<stdio.h>
+    #include<matrix.h>
+
+    int main()
+    {
+        double a[]={
+            1,2,3,
+            4,5,6,
+            7,8,9
+        };
+        double b[]={
+            1,
+            2,
+            3
+        };
+        matrix a_mat=array_to_matrix(3,3,a);
+        matrix b_mat=array_to_matrix(3,1,b);
+        matrix mat_concat=concat_side(a_mat,b_mat);
+        show_matrix(mat_concat);
+        return 0;
+    }
+
+concat_down
+-----------
+Help for function concat_down
+::
+    matrix concat_down(matrix m1,matrix m2)
+Returns a new matrix in which second matrix m2 is concatenated below the first matrix.
+**Number of columns in both the matrices should be same.**
+::
+    #include<stdio.h>
+    #include<matrix.h>
+
+    int main()
+    {
+        double a[]={
+            1,2,3,
+            4,5,6,
+            7,8,9
+        };
+        double b[]={1,2,3};
+        matrix a_mat=array_to_matrix(3,3,a);
+        matrix b_mat=array_to_matrix(1,3,b);
+        matrix mat_concat=concat_down(a_mat,b_mat);
+        show_matrix(mat_concat);
+        return 0;
+    }
+
+rank
+-----
+Help for function rank
+::
+    int rank(matrix m)
+Returns the rank ( linearly independent rows or columns in the matrix) of the matrix.
+::
+    #include<stdio.h>
+    #include<matrix.h>
+
+    int main()
+    {
+        double a[]={
+        1,2,3,
+        4,5,6,
+        7,8,9
+        };
+        matrix a_mat=array_to_matrix(3,3,a);
+        int rank_a_mat=rank(a_mat);
+        printf("%d\n",rank_a_mat);
+        return 0;
+    }
+
+inverse
+--------
+Help for function inverse
+::
+    matrix inverse(matrix m)
+Returns a new matrix which is inverse of the given matrix provided the inverse exists.
+**Given Matrix must be a square matrix.**
+**If the inverse does not exists then it writes a message on the**
+**standard error that inverse does not exist**
+::
+    #include<stdio.h>
+    #include<matrix.h>
+
+    int main()
+    {
+        double a[]={
+            -1,1.5,
+            1,-1
+        };
+        matrix a_mat=array_to_matrix(2,2,a);
+        matrix a_mat_inv=inverse(a_mat);
+        show_matrix(a_mat_inv);
+        return 0;
+    }
+
+solvematrix
+------------
+Help for function solvematrix
+::
+    matrix solvematrix(matrix coeff_matrix,matrix val_mat)
+Returns the unique solution of a system of linear equations **(if it exists)** by the 
+gauss elimination method else writes **No unique solution exists** on the standard error.
+The solution (if it exists) is returned as a **row vector**.
+If we represent the system as Ax=b then A is coeff_matrix b is val_mat **(column vector)** and
+return value is x.
+::
+    #include<stdio.h>
+    #include<matrix.h>
+
+    int main()
+    {
+        /* System of equation is
+            0x1 + 8x2 + 2x3 = -7
+            3x1 + 5x2 + 2x3 = 8
+            6x1 + 2x2 + 8x3 = 26 */
+        /* Solution of the above system is 
+            x1 = 4 , x2=-1 , x3=0.5 */
+        
+        double a[]={
+            0,8,2,
+            3,5,2,
+            6,2,8
+        };
+        double b[]={
+            -7,
+            8,
+            26
+        };
+        matrix coeff_mat=array_to_matrix(3,3,a);
+        matrix val_mat=array_to_matrix(3,1,b);
+        matrix sol=solvematrix(coeff_mat,val_mat);
+        show_matrix(sol);
+        return 0;
+    }
+
+gauss_siedel
+-------------
+Help for function gauss_siedel
+::
+    matrix gauss_siedel(matrix coeff,matrix val_mat,double tol,int iterations)
+Returns the solution of a system of linear equations by using the gauss-siedel
+algorithm also known as the Liebmann method.It is an iterative method that can be applied on **any matrix with non-zero diagonal elements**
+though convergence is only guaranteed if the matrix is either strictly diagonal dominant
+or symmetric and positive definite.
+
+| Here for the system Ax=b:
+| A is coeff
+| b is val_mat
+| tol is tolerance
+| iterations stand for the maximum number of iterations allowed.
+
+The solution (if it converges to the required accuracy) is returned as a **row vector**.
+::
+    #include<stdio.h>
+    #include<matrix.h>
+
+    int main()
+    {
+        /* System of equation is
+        0x1 + 8x2 + 2x3 = -7
+        3x1 + 5x2 + 2x3 = 8
+        6x1 + 2x2 + 8x3 = 26 */
+        /* Solution of the above system is 
+            x1 = 4 , x2=-1 , x3=0.5 */
+        /*As the above system has a zero diagonal entry 
+        therefore converting 'A' matrix to upper triangular matrix*/ 
+        double a[]={
+            6,2,8,
+            0,8,2,
+            0,0,-3
+        };
+        double b[]={
+            26,
+            -7,
+            -1.5
+        };
+        matrix coeff_mat=array_to_matrix(3,3,a);
+        matrix val_mat=array_to_matrix(3,1,b);
+        matrix sol=gauss_siedel(coeff_mat,val_mat,1e-8,100);
+        show_matrix(sol);
+        return 0;
+    }

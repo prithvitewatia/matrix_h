@@ -1,0 +1,307 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Welcome to Matrix_h’s documentation! &mdash; Matrix_h 1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Functions and Examples" href="func_examples.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="#" class="icon icon-home"> Matrix_h
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="func_examples.html">Functions and Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Caution.html">Caution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Feedback.html">Feedback</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">Matrix_h</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="#" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Welcome to Matrix_h’s documentation!</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="welcome-to-matrix-h-s-documentation">
+<h1>Welcome to Matrix_h’s documentation!<a class="headerlink" href="#welcome-to-matrix-h-s-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="matrix-h">
+<h2>Matrix_h<a class="headerlink" href="#matrix-h" title="Permalink to this headline">¶</a></h2>
+<p>Matrix_h hosts a fast, efficient and easy to use C linear algebra library by the name libmatrix.</p>
+</div>
+<div class="section" id="key-features">
+<h2>Key Features<a class="headerlink" href="#key-features" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Simple and easy to use</p></li>
+<li><p>Fast and memory efficient</p></li>
+<li><p>No explicit pointers</p></li>
+<li><p>Error detection</p></li>
+</ul>
+</div>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>Clone the repository into your computer by executing the following command in the terminal.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">prithvitewatia</span><span class="o">/</span><span class="n">matrix_h</span>
+</pre></div>
+</div>
+<p>cd in the the repository</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">matrix_h</span>
+</pre></div>
+</div>
+<p>Run the following command</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">libmatrix</span><span class="o">.</span><span class="n">a</span>
+</pre></div>
+</div>
+<p>If everything runs fine you will see files libmatrix.a and matrix.o generated in the directory. If not please make sure that
+you have gcc and make installed and set on <strong>PATH</strong>. Links to
+gcc: <a class="reference external" href="https://sourceforge.net/projects/mingw-w64/">gcc</a>
+make: <a class="reference external" href="https://sourceforge.net/projects/gnuwin32/files/make/3.81/make-3.81.exe/download?use_mirror=excellmedia&amp;download=">make</a></p>
+<p>Congrats your library is now generated.</p>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>Copy the include folder into your project directory</p></li>
+<li><p>Create a lib folder and move the <strong>libmatrix.a</strong> into lib folder</p></li>
+<li><p>Include the library in your C file by using the include directive</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include&lt;matrix.h&gt;</span>
+</pre></div>
+</div>
+</li>
+<li><p>To build your C file execute the command</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gcc</span> <span class="n">yourCfile</span><span class="o">.</span><span class="n">c</span> <span class="o">-</span><span class="n">I</span> <span class="o">./</span><span class="n">include</span> <span class="o">-</span><span class="n">L</span> <span class="o">./</span><span class="n">lib</span> <span class="o">-</span><span class="n">lmatrix</span> <span class="o">-</span><span class="n">o</span> <span class="n">yourOutputfile</span>
+</pre></div>
+</div>
+</li>
+<li><p>Run your file by</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">yourOutputfile</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="func_examples.html">Functions and Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="func_examples.html#new-matrix">new_matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="func_examples.html#array-to-matrix">array_to_matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="func_examples.html#show-matrix">show_matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="func_examples.html#get-value">get_value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="func_examples.html#set-value">set_value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="func_examples.html#set-all-value">set_all_value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="func_examples.html#delete-matrix">delete_matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="func_examples.html#matrix-rowcount">matrix_rowcount</a></li>
+<li class="toctree-l2"><a class="reference internal" href="func_examples.html#matrix-columncount">matrix_columncount</a></li>
+<li class="toctree-l2"><a class="reference internal" href="func_examples.html#copy-matrix">copy_matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="func_examples.html#matrix-dot">matrix_dot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="func_examples.html#matrix-isequal">matrix_isequal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="func_examples.html#submatrix">submatrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="func_examples.html#add-matrix">add_matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="func_examples.html#sum-matrix">sum_matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="func_examples.html#multiply-matrix">multiply_matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="func_examples.html#transpose-matrix">transpose_matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="func_examples.html#power-matrix">power_matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="func_examples.html#determinant">determinant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="func_examples.html#concat-side">concat_side</a></li>
+<li class="toctree-l2"><a class="reference internal" href="func_examples.html#concat-down">concat_down</a></li>
+<li class="toctree-l2"><a class="reference internal" href="func_examples.html#rank">rank</a></li>
+<li class="toctree-l2"><a class="reference internal" href="func_examples.html#inverse">inverse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="func_examples.html#solvematrix">solvematrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="func_examples.html#gauss-siedel">gauss_siedel</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Caution.html">Caution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Feedback.html">Feedback</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h2>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="func_examples.html" class="btn btn-neutral float-right" title="Functions and Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Prithvi.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
