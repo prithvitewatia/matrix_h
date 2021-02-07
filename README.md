@@ -1,8 +1,9 @@
 # Libmatrix
 
 Libmatrix is a fast, efficient and easy to use **C linear algerbra library**.  
-Documentation: [![Documentation Status](https://readthedocs.org/projects/matrix-h/badge/?version=latest)](https://matrix-h.readthedocs.io/en/latest/?badge=latest)  
-License: [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Documentation Status](https://readthedocs.org/projects/matrix-h/badge/?version=latest)](https://matrix-h.readthedocs.io/en/latest/?badge=latest)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](code_of_conduct.md)
 
 ## MOTIVATION
 
