@@ -99,6 +99,43 @@ TEST(GET_VALUE_TEST,doubleValues){
     ASSERT_TRUE(isclose(v,5.53));
 }
 // ---------------------------------
+// Testing function set value
+
+// Testing on lower bounds
+TEST(SET_VALUE_TEST,lowerBoundindex){
+    double at41[]={
+        9,8,
+        7,6,
+        5,4
+    };
+    matrix mt41=array_to_matrix(3,2,at41);
+    set_value(&mt41,0,0,1);
+    double at42[]={
+        1,8,
+        7,6,
+        5,4
+    };
+    matrix mt42=array_to_matrix(3,2,at42);
+    ASSERT_TRUE(matrix_isequal(mt41,mt42));
+}
+// Testing on upper bounds
+TEST(SET_VALUE_TEST,upperBoundindex){
+    double at41[]={
+        9,8,
+        7,6,
+        5,4
+    };
+    matrix mt41=array_to_matrix(3,2,at41);
+    set_value(&mt41,2,1,7);
+    double at42[]={
+        9,8,
+        7,6,
+        5,7
+    };
+    matrix mt42=array_to_matrix(3,2,at42);
+    ASSERT_TRUE(matrix_isequal(mt41,mt42));
+}
+// ------------------------------------
 // Main function
 int main(int argc,char *argv[]){
     testing::InitGoogleTest(&argc,argv);
