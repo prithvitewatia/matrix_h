@@ -46,14 +46,13 @@ Congrats your library is now generated.
 Usage
 =======
 
-* Copy the include folder into your project directory
-* Create a lib folder and move the **libmatrix.a** into lib folder
+* Copy the matrix.h file and libmatrix.a files to your project folder.
 * Include the library in your C file by using the include directive
   ::
-    #include<matrix.h>
+    #include "matrix.h"
 * To build your C file execute the command
   ::
-    gcc yourCfile.c -I ./include -L ./lib -lmatrix -o yourOutputfile
+    gcc yourCfile.c -L . -lmatrix -o yourOutputfile
 
 * Run your file by
   ::

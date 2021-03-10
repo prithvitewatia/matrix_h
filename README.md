@@ -43,15 +43,14 @@ Link to
 Congrats your library is now generated
 
 ## Usage
-- Copy the include folder to your project directory.
-- Create a lib folder and move the **libmatrix.a** into the lib folder
+- Copy the matrix.h file and libmatrix.a to your project folder.
 - Include the library in your C file by using the include directive
 ```C
-#include<matrix.h>
+#include "matrix.h"
 ```
 - To build your C file execute the command
 ```
-gcc yourCfile.c -I ./include -L ./lib -lmatrix -o yourOutputfile
+gcc yourCfile.c  -L . -lmatrix -o yourOutputfile
 ```
 - Run your file by
 ```
@@ -63,16 +62,16 @@ Happy coding!
 ## EXAMPLES
 
 A program to add to matrices and check if the result is equal to third matrix.
-![example](https://github.com/prithvitewatia/matrix_h/blob/master/doc_images/matrix_add_example_code.png?raw=true)
+![example](https://github.com/prithvitewatia/matrix_h/blob/master/doc_images/matrix_add.png?raw=true)
 
 The output of the above program
-![example](https://github.com/prithvitewatia/matrix_h/blob/master/doc_images/matrix_add_output.png?raw=true)
+![example](https://github.com/prithvitewatia/matrix_h/blob/master/doc_images/matrix_add_res.png?raw=true)
 
 Here is another example in which we calculate rank and determinant.
-![example](https://github.com/prithvitewatia/matrix_h/blob/master/doc_images/rank_det_example.png?raw=true)
+![example](https://github.com/prithvitewatia/matrix_h/blob/master/doc_images/rank_determinant.png?raw=true)
 
 Here is its output
-![example](https://github.com/prithvitewatia/matrix_h/blob/master/doc_images/rank_det_output.png?raw=true)
+![example](https://github.com/prithvitewatia/matrix_h/blob/master/doc_images/rank_determinant_res.png?raw=true)
 
 For official documentation visit [matrix-h documentation](https://matrix-h.readthedocs.io/en/latest/?badge=latest)
 
