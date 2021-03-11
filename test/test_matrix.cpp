@@ -135,6 +135,38 @@ TEST(SET_VALUE_TEST,upperBoundindex){
     matrix mt42=array_to_matrix(3,2,at42);
     ASSERT_TRUE(matrix_isequal(mt41,mt42));
 }
+// Testing on in between indexes
+TEST(SET_VALUE_TEST,middleIndex){
+    double arr1[]={
+        9,8,
+        7,6,
+        5,4
+    };
+    matrix m1=array_to_matrix(3,2,arr1);
+    set_value(&m1,1,1,23);
+    double arr2[]={
+        9,8,
+        7,23,
+        5,4
+    };
+    matrix m2=array_to_matrix(3,2,arr2);
+    ASSERT_TRUE(matrix_isequal(m1,m2));
+}
+// Testing on double values
+TEST(SET_VALUE_TEST,doubleValues){
+    double arr1[]={
+        6.98,7.12,
+        1.23,5.14
+    };
+    matrix m1=array_to_matrix(2,2,arr1);
+    set_value(&m1,0,1,8.86);
+    double arr2[]={
+        6.98,8.86,
+        1.23,5.14
+    };
+    matrix m2=array_to_matrix(2,2,arr2);
+    ASSERT_TRUE(matrix_isequal(m1,m2));
+}
 // ------------------------------------
 // Main function
 int main(int argc,char *argv[]){
