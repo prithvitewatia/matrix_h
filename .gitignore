@@ -1,1 +1,5 @@
 .vscode
+test/CMakeFiles/*
+test/CMakeFiles
+cmake_install.cmake
+CMakeCache.txt

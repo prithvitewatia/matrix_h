@@ -1,12 +1,25 @@
 #include "matrix.h"
 
-char buffer[1000];
-
-//writes a message to standard error and exits the program with code EXIT_FAILURE
-static void error(const char *msg)
+//writes a message to standard error and exits the program
+static void error(const char *func_name)
 {
-    fprintf(stderr,"%s\n",msg);
-    exit(EXIT_FAILURE);
+    fprintf(stderr,"In function %s.",func_name);
+    if(errno=EDIM){
+        fprintf(stderr,"Dimension error.Index out of bounds\n");
+    }
+    else if(errno==EOUTMEM){
+        fprintf(stderr,"Out of memory\n");
+    }
+    else if(errno==EDIMMISMATCH){
+        fprintf(stderr,"Dimensions do not match\n");
+    }
+    else if(errno==NOSOL){
+        fprintf(stderr,"No solution exists\n");
+    }
+    else{
+        fprintf(stderr,"%s\n",strerror(errno));
+    }
+    exit(errno);
 }
 
 //Returns the number of rows in the matrix
@@ -40,13 +53,9 @@ void show_matrix(matrix m)
 //Returns a NULL (zero) matrix of dimension row x column
 matrix new_matrix(int row,int column)
 {
-    if (row<=0){
-        sprintf(buffer,"Error in function new_matrix! Matrix row=%d is invalid: Dimension error",row);
-        error(buffer);
-    }
-    else if (column<=0){
-        sprintf(buffer,"Error in function new_matrix! Matrix column=%d is invalid: Dimension error",column);
-        error(buffer);
+    if((row<=0) || (column<=0)){
+        errno=EDOM;
+        error(__func__);
     }
     else
     {
@@ -68,7 +77,8 @@ matrix new_matrix(int row,int column)
         }
         else
         {
-            error("Error! Could not allocate memory for the matrix");
+            errno=EOUTMEM;
+            error(__func__);
         }
          
     }
@@ -77,13 +87,9 @@ matrix new_matrix(int row,int column)
 //Retrieves the value from matrix from indexes specified in row and column
 double get_value(matrix m,int row,int column)
 {
-    if((row<0) || (row>(m.row-1))){
-        sprintf(buffer,"Error in retrieving the value! Row index=%d is greater rows present in matrix=(%d) or less then zero: Dimension error",row,m.row);
-        error(buffer);
-    }
-    else if((column<0)||(column>(m.column-1))){
-        sprintf(buffer,"Error in retrieving the value! Column index=%d is greater than column present in the matrix=(%d) or less then zero: Dimension error",column,m.column);
-        error(buffer);
+    if((row<0)||(row>=m.row)||(column<0)||(column>m.column)){
+        errno=EDIM;
+        error(__func__);
     }
     else
     {
@@ -97,15 +103,9 @@ double get_value(matrix m,int row,int column)
 //Sets the value of a matrix at position specified by indexes row and column.
 void set_value(matrix *m,int row,int column,double value)
 {
-    if((row<0)||(row>m->row-1))
-    {
-        sprintf(buffer,"Error in function set_value! Row index recieved=%d is out of bounds. m.row=%d",row,m->row);
-        error(buffer);
-    }
-    else if((column<0)||(column>m->column-1))
-    {
-        sprintf(buffer,"Error in function set_value! Column index recieved=%d is out of bounds. m.column=%d",column,m->column);
-        error(buffer);
+    if((row<0)||(row>=m->row)||(column<0)||(column>=m->column)){
+        errno=EDIM;
+        error(__func__);
     }
     int pos=row*m->column+column;
     m->element[pos]=value;    
@@ -135,15 +135,9 @@ void delete_matrix(matrix *m)
 //Ensure that number of values in the array matches row x column
 matrix array_to_matrix(int row,int column,double *values)
 {
-    if(row<=0)
-    {
-        sprintf(buffer,"Error in converting array to matix! Number of rows=%d is invalid",row);
-        error(buffer);
-    }
-    else if(column<=0)
-    {
-        sprintf(buffer,"Error in converting array to matrix! Number of column=%d is invalid",column);
-        error(buffer);
+    if((row<=0)||(column<=0)){
+        errno=EDOM;
+        error(__func__);
     }
     matrix m=new_matrix(row,column);
     for(int i=0;i<row*column;i++)
@@ -206,14 +200,9 @@ static int check_tolerance(matrix m1,matrix m2,double tol)
 //returns a dot product of two vectors
 double matrix_dot(matrix m1,matrix m2)
 {
-    if(m1.column!=m2.column)
-    {
-        sprintf(buffer,"Error in function matrix_dot! Matrix column dimensions do not match. m1.column=%d and m2.column=%d",m1.column,m2.column);
-        error(buffer); 
-    }
-    if((m1.row!=1)||(m2.row!=1))
-    {
-        error("Error in function matrix_dot! Argument should be a vector! (Matrix with 1 row)");
+    if((m1.column!=1)||(m2.column!=1)||(m1.column!=m2.column)){
+        errno=EDIMMISMATCH;
+        error(__func__);
     }
     matrix temp_product=new_matrix(1,m1.column);
     for(int i=0;i<m1.column;i++)
@@ -250,21 +239,12 @@ int matrix_isequal(matrix m1, matrix m2)
 //Equivalent of python's numpy M[row_start:row_end+1,column_start:column_end+1]
 matrix submatrix(matrix m,int row_start,int column_start,int row_end,int column_end)
 {
-    if(row_start<0||column_start<0){
-        sprintf(buffer,"Error in calculating submatrix! Starting indexes for matrix must be greater than or equal to 0. Recieved row_start=%d and column_start=%d",row_start,column_start);
-        error(buffer);
-    }
-    else if(row_end>=m.row||column_end>=m.column){
-        sprintf(buffer,"Error in calculating submatrix! Ending indexes must lie within the dimensions of the matrix. Recieved row_end=%d and column_end=%d",row_end,column_end);
-        error(buffer);
-    }
-    else if((row_end-row_start+1)<=0){
-        sprintf(buffer,"Error in calculating submatrix! Row end must be greater than or equal to row start. row_start=%d and row_end=%d",row_start,row_end);
-        error(buffer);
-    }
-    else if((column_end-column_start+1)<=0){
-        sprintf(buffer,"Error in calculating submatrix! Column end must be greater than or equal to column start. column_start=%d and column_end=%d",column_start,column_end);
-        error(buffer);
+    if((row_start<0)||(column_start<0)
+        ||(row_end>=m.row)||(column_end>=m.column)
+        ||(row_end-row_start+1)<=0
+        ||(column_end-column_start+1)<=0){
+            errno=EDIM;
+            error(__func__);
     }
     else
     {
@@ -287,13 +267,9 @@ matrix submatrix(matrix m,int row_start,int column_start,int row_end,int column_
 //Adds two matrices of same dimensions and returns the matrix.
 matrix add_matrix(matrix m1,matrix m2)
 {
-    if(m1.row!=m2.row){
-        sprintf(buffer,"Error in addition of matrices! Matrix rows count do not match: Dimension error. Recieved m1 rows=%d and m2 rows=%d",m1.row,m2.row);
-        error(buffer);
-    }
-    else if(m2.column!=m2.column){
-        sprintf(buffer,"Error in addition of matrices! Matrix column count do not match: Dimension error. Recieved m1 column=%d and m2 column=%d",m1.column,m2.column);
-        error(buffer);
+    if((m1.row!=m2.row)||(m1.column!=m2.column)){
+        errno=EDIMMISMATCH;
+        error(__func__);
     }
     else
     {
@@ -319,8 +295,8 @@ matrix add_matrix(matrix m1,matrix m2)
 matrix sum_matrix(int args_count,matrix m,...)
 {
     if(args_count<1){
-        sprintf(buffer,"Error in summation of matrices! Matrix count recieved in function sum_matrix is less than 1: Argument error");
-        error(buffer);
+        errno=EINVAL;
+        error(__func__);
     }
     else
     {
@@ -345,8 +321,8 @@ matrix sum_matrix(int args_count,matrix m,...)
 matrix multiply_matrix(matrix m1,matrix m2)
 {
     if(m1.column!=m2.row){
-        sprintf(buffer,"Error in multiplication of matrices! Number of column of first matrix should be equal to number of rows in second matrix. Recieved m1 column=%d and m2 row=%d",m1.column,m2.row);
-        error(buffer);
+        errno=EDIMMISMATCH;
+        error(__func__);
     }
     else
     {
@@ -386,12 +362,12 @@ matrix transpose_matrix(matrix m)
 matrix power_matrix(matrix m,int pow)
 {
     if(pow<0){
-        sprintf(buffer,"Error in calculating power of matrix! power should be greater than or equal to 0 Recieved pow=%d. To calculate inverse use inverse_matrix function instead",pow);
-        error(buffer);
+        errno=EINVAL;
+        error(__func__);
     }
     if(m.row!=m.column){
-        sprintf(buffer,"Error! To calculate power matrix, the argument must be a square matrix");
-        error(buffer);
+        errno=EDIMMISMATCH;
+        error(__func__);
     }
     if(pow==0)
     {
@@ -460,7 +436,8 @@ double determinant(matrix m)
 {
     if(m.row!=m.column)
     {
-        error("To calculate determinant, matrix must be a square matrix");
+        errno=EDIMMISMATCH;
+        error(__func__);
     }
     matrix m_copy=copy_matrix(m);
     int row_swap_count=0;
@@ -523,8 +500,8 @@ matrix concat_side(matrix m1, matrix m2)
 {
     if(m1.row!=m2.row)
     {
-        sprintf(buffer,"Error in concatination of matrices! Matrices row count do not match. m1 row=%d and m2 row=%d",m1.row,m2.row);
-        error(buffer);
+        errno=EDIMMISMATCH;
+        error(__func__);
     }
     matrix concat_smat=new_matrix(m1.row,m1.column+m2.column);
     for(int i=0;i<m1.row;i++)
@@ -549,8 +526,8 @@ matrix concat_down(matrix m1,matrix m2)
 {
     if(m1.column!=m2.column)
     {
-        sprintf(buffer,"Error in concatination of matrices! Matrices column count do not match. m1 column=%d and m2 column=%d",m1.column,m2.column);
-        error(buffer);
+        errno=EDIMMISMATCH;
+        error(__func__);
     }
     matrix concat_dmat=new_matrix(m1.row+m2.row,m1.column);
     for(int i=0;i<m1.row;i++)
@@ -597,7 +574,8 @@ matrix inverse(matrix m)
 {
     if(m.row!=m.column)
     {
-        error("Error in function inverse! matrix is not square");
+        errno=EDIMMISMATCH;
+        error(__func__);
     }
     matrix I=new_matrix(m.row,m.column);
     for(int i=0;i<m.row;i++)
@@ -607,7 +585,8 @@ matrix inverse(matrix m)
     matrix upp=concat_side(m,I);
     if(rank(upp)<m.row)
     {
-        error("Error! Matrix inverse does not exists");
+        errno=NOSOL;
+        error(__func__);
     }
     for(int i=upp.row-1;i>0;i--)
     {
@@ -658,16 +637,18 @@ matrix solvematrix(matrix coeff_mat,matrix val_mat)
 {
     if(coeff_mat.row!=coeff_mat.column)
     {
-        error("Error in function solvematrix! coefficient matrix is not square.");
+        errno=EDIMMISMATCH;
+        error(__func__);
     }
     if (val_mat.row!=coeff_mat.row)
     {
-        sprintf(buffer,"Error in function solvematrix! coefficient matrix row count and value matrix row count do not match. Got val_mat row=%d and coeff_mat row=%d",val_mat.row,coeff_mat.row);
-        error(buffer);
+        errno=EDIMMISMATCH;
+        error(__func__);
     }
     if(val_mat.column>1)
     {
-        error("Error! Invalid number of columns for value matrix. Expected 1.");
+        errno=EDIMMISMATCH;
+        error(__func__);
     }
     matrix aug_matrix=concat_side(coeff_mat,val_mat);
     for(int k=0;k<aug_matrix.row-1;k++)
@@ -678,8 +659,10 @@ matrix solvematrix(matrix coeff_mat,matrix val_mat)
             if(fabs(get_value(aug_matrix,z,k)<fabs(get_value(aug_matrix,j,k))))
                 z=j;
         }
-        if(fabs(get_value(aug_matrix,z,k))<1e-7)
-            error("No unique solution exists! Procedure completed unsuccessfully");
+        if(fabs(get_value(aug_matrix,z,k))<1e-7){
+            errno=NOSOL;
+            error(__func__);
+        }
         else
         {        
             //swapping rows k and z
@@ -692,7 +675,8 @@ matrix solvematrix(matrix coeff_mat,matrix val_mat)
         }
         if(fabs(get_value(aug_matrix,aug_matrix.row-1,aug_matrix.row-1))<1e-7)
         {
-            error("No unique solution exists! Procedure completed unsuccessfully");
+            errno=NOSOL;
+            error(__func__);
         }
         else
         {
@@ -735,7 +719,10 @@ matrix gauss_siedel(matrix coeff,matrix val_mat,double tol,int iterations)
     {
         if(fabs(get_value(coeff,i,i))<1e-7)
         {
-            error("gauss-seidel algorithm fails if the diagonal entry is zero");
+            // gauss-siedel algorithm works only if
+            // diagonal entries are non zero
+            errno=EINVAL;
+            error(__func__);
         }
     }
     matrix x=new_matrix(1,val_mat.row);

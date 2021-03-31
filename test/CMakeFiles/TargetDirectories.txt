@@ -1,3 +1,0 @@
-/mnt/c/Users/prith/Documents/Projects/C and Cpp/matrix/test/CMakeFiles/rebuild_cache.dir
-/mnt/c/Users/prith/Documents/Projects/C and Cpp/matrix/test/CMakeFiles/edit_cache.dir
-/mnt/c/Users/prith/Documents/Projects/C and Cpp/matrix/test/CMakeFiles/runTests.dir

@@ -20,6 +20,14 @@ write tests for all the functions
 #include<stdlib.h>
 #include<stdarg.h>
 #include<math.h>
+#include<errno.h>
+#include<string.h>
+
+
+#define EDIM 9001     //Dimension error
+#define EOUTMEM 9002  //Out of memory
+#define EDIMMISMATCH 9003  //Dimensions mismatch
+#define NOSOL 9004 //No solution exists
 
 typedef struct 
 {
