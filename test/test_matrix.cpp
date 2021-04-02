@@ -120,6 +120,26 @@ TEST(GET_VALUE_TEST,doubleValues){
 // ---------------------------------
 // Testing function set value
 
+// Invalid rowIndex
+TEST(SET_VALUE_TEST,invRow){
+    double at[]={
+        3,7,
+        8,12,
+        67,11
+    };
+    matrix m=array_to_matrix(3,2,at);
+    ASSERT_EXIT(set_value(&m,3,0,8),::testing::ExitedWithCode(EXIT_FAILURE),"In function set_value.Dimension error.Index out of bounds\n");
+}
+// Invalid Column
+TEST(SET_VALUE_TEST,invCol){
+    double at[]={
+        4,78,
+        2,12,
+        98,16,
+    };
+    matrix m=array_to_matrix(3,2,at);
+     ASSERT_EXIT(set_value(&m,3,0,8),::testing::ExitedWithCode(EXIT_FAILURE),"In function set_value.Dimension error.Index out of bounds\n");
+}
 // Testing on lower bounds
 TEST(SET_VALUE_TEST,lowerBoundindex){
     double at41[]={
