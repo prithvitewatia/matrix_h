@@ -4,7 +4,7 @@
 static void error(const char *func_name)
 {
     fprintf(stderr,"In function %s.",func_name);
-    if(errno=EDIM){
+    if(errno==EDIM){
         fprintf(stderr,"Dimension error.Index out of bounds\n");
     }
     else if(errno==EOUTMEM){
@@ -19,7 +19,7 @@ static void error(const char *func_name)
     else{
         fprintf(stderr,"%s\n",strerror(errno));
     }
-    exit(errno);
+    exit(EXIT_FAILURE);
 }
 
 //Returns the number of rows in the matrix
@@ -87,7 +87,7 @@ matrix new_matrix(int row,int column)
 //Retrieves the value from matrix from indexes specified in row and column
 double get_value(matrix m,int row,int column)
 {
-    if((row<0)||(row>=m.row)||(column<0)||(column>m.column)){
+    if((row<0)||(row>=m.row)||(column<0)||(column>=m.column)){
         errno=EDIM;
         error(__func__);
     }

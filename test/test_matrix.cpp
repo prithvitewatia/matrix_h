@@ -14,11 +14,11 @@ bool isclose(double a,double b){
 
 // Testing invalid row number
 TEST(NEW_MATRIX_TEST,negativeInputRow){
-     ASSERT_EXIT(new_matrix(-1,2),::testing::ExitedWithCode(EXIT_FAILURE),"Error in function new_matrix! Matrix row=-1 is invalid: Dimension error");
+     ASSERT_EXIT(new_matrix(-1,2),::testing::ExitedWithCode(EXIT_FAILURE),"In function new_matrix.Numerical argument out of domain");
 }
 // Testing invalid column number
 TEST(NEW_MATRIX_TEST,negativeInputColumn){
-    ASSERT_EXIT(new_matrix(1,-5),::testing::ExitedWithCode(EXIT_FAILURE),"Error in function new_matrix! Matrix column=-5 is invalid: Dimension error");
+    ASSERT_EXIT(new_matrix(1,-5),::testing::ExitedWithCode(EXIT_FAILURE),"In function new_matrix.Numerical argument out of domain");
 }
 // Testing row number greater than column number
 TEST(NEW_MATRIX_TEST,rGTc){
@@ -54,6 +54,25 @@ TEST(NEW_MATRIX_TEST,rEQc){
 // ---------------------------
 // Testing function get_value
 
+// Testing invalid row index
+TEST(GET_VALUE_TEST,invRow){
+    double at[]={
+        9,7,34,
+        45,2,12,
+        7,8,12
+    };
+    matrix m=array_to_matrix(3,3,at);
+    ASSERT_EXIT(get_value(m,3,2),::testing::ExitedWithCode(EXIT_FAILURE),"In function get_value.Dimension error.Index out of bounds\n");
+}
+// Testing invalid column index
+TEST(GET_VALUE_TEST,invCol){
+    double at[]={
+        1,3,5,
+        3,7,2
+    };
+    matrix m=array_to_matrix(2,3,at);
+    ASSERT_EXIT(get_value(m,0,3),::testing::ExitedWithCode(EXIT_FAILURE),"In function get_value.Dimension error.Index out of bounds\n");
+}
 // Testing on lower bounds of indexes
 TEST(GET_VALUE_TEST,lowerBoundindex){
     double at11[]={
