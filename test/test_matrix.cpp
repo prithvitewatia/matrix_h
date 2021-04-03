@@ -207,6 +207,20 @@ TEST(SET_VALUE_TEST,doubleValues){
     ASSERT_TRUE(matrix_isequal(m1,m2));
 }
 // ------------------------------------
+// Testing function copy_matrix
+TEST(COPY_MATRIX_TEST,oneVal){
+    double arr[]={
+        7.65,8.91,6.12,
+        0.41,3.10,11.1,
+    };
+    matrix m1=array_to_matrix(2,3,arr);
+    matrix m2=copy_matrix(m1);
+    // Checking if m1 and m2 do not point to same matrix
+    bool condition1=m1.element!=m2.element;
+    // Data contained in both the matrices is same
+    bool condition2=matrix_isequal(m1,m2);
+    ASSERT_TRUE(condition1 && condition2);
+}
 // Main function
 int main(int argc,char *argv[]){
     testing::InitGoogleTest(&argc,argv);
